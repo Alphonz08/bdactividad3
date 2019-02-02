@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="hibernate3.Ciudad" table="ciudad">
+        <id name="id"
+            column="idciudad"
+            type="java.lang.Long"
+            unsaved-value="null">
+            <generator class="increment">
+            </generator>
+        </id>
+
+        <property name="nombre"
+            unique="true"
+            type="java.lang.String"/>
+
+        <bag name="alumnos"
+            lazy="false"
+            table="alumno"
+            inverse="false"
+            cascade="save-update">
+
+            <key column="ciudad_idciudad"/>
+
+            <one-to-many class="hibernate3.Alumno"/>     
+        </bag>
+    </class>
+</hibernate-mapping>

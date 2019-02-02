@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">  
+
+<hibernate-mapping>
+    <class name="hibernate3.Alumno" table="alumno">
+        <id name="id"
+            column="idalumno"
+            type="java.lang.Long"
+            unsaved-value="null">
+            <generator class="increment">
+            </generator>
+        </id>
+        
+        <property name="nombre"
+            type="java.lang.String"/>
+        
+        <property name="edad"
+            type="java.lang.Integer"/>
+        
+            <many-to-one name="ciudad" column="ciudad_idciudad" class="hibernate3.Ciudad" not-null="true">               
+            </many-to-one>
+    </class>
+</hibernate-mapping>
